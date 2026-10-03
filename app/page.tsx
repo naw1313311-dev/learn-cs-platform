@@ -1,11 +1,7 @@
-import Link from 'next/link';
-import { Navbar } from '@/components/Navbar';
-import { Hero } from '@/components/Hero';
-import { FeatureSection } from '@/components/FeatureSection';
-import { StatsBar } from '@/components/StatsBar';
-import { CourseCard } from '@/components/CourseCard';
-import { Footer } from '@/components/Footer';
-import { courses } from '@/data/courses';
+import { tracks } from '@/data/tracks';
+import { TrackCard } from '@/components/TrackCard';
+import { testimonials } from '@/data/testimonials';
+import { PricingSection } from '@/components/PricingSection';
 
 export default function HomePage() {
   return (
@@ -14,6 +10,19 @@ export default function HomePage() {
       <Hero />
       <StatsBar />
       <FeatureSection />
+
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mb-10 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-300">المسارات</p>
+          <h2 className="mt-4 text-3xl font-bold text-white">مسارات تعليمية متكاملة</h2>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {tracks.map((track) => (
+            <TrackCard key={track.slug} track={track} />
+          ))}
+        </div>
+      </section>
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mb-10 flex items-center justify-between gap-4">
@@ -35,6 +44,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <TestimonialSection />
+      <PricingSection />
 
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft">
